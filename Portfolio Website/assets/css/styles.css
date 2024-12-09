@@ -480,10 +480,23 @@
 }
 
 /*=============== SKILLS ===============*/
-
 /* Container for skills section: defines a grid layout with three columns */
 .skills__container {
-  grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive column layout*/
+  gap: 1.5rem; /* Space between items */
+}
+
+@media (max-width: 1024px) {
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .skills__container {
+    grid-template-columns: 1fr; /* One column for smaller screens */
+  }
 }
 
 /* Individual skill item styling */
@@ -491,6 +504,13 @@
   background-color: var(--container-color); /* Sets background color */
   padding: 3.5rem 2.5rem; /* Adds padding inside the item */
   border-radius: var(--radius); /* Rounds the corners */
+  opacity: 0; /* Default state for fade-in */
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.skills__item.aos-animate {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Reset any transform */
 }
 
 /* Icon styling for skill items */
