@@ -1,0 +1,1065 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 6rem;
+
+  /*========== Colors ==========*/
+  /* Color mode HSL(hue, saturation, lightness) */
+  --first-color: hsl(350, 98%, 64%);
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: hsl(0, 0%, 77%);
+  --body-color: hsl(0, 0%, 6%);
+  --container-color: hsl(0, 0%, 10%);
+  --border-color: hsla(0, 0%, 100%, 0.2);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --second-font: 'Montserrat', sans-serif;
+
+  --big-font-size: clamp(2rem, 0.9706rem + 4.7059vw, 4.5rem);
+  --h1-font-size: clamp(1.75rem, 0.9265rem + 3.7647vw, 3.75rem);
+  --h2-font-size: 1.75rem;
+  --h3-font-size: 1.5rem;
+  --normal-font-size: 1.125rem;
+  --small-font-size: 1rem;
+  --smaller-font-size: 0.875rem;
+
+  /*========== Font weight ==========*/
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-900: 900;
+
+  /*========== Transition ==========*/
+  --transition: cubic-bezier(0.05, 0.2, 0.1, 1);
+
+  /*========== Border Radius ==========*/
+  --radius: 0.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/* Media query for screen widths of 992px or smaller */
+@media screen and (max-width: 992px) {
+  /* Targeting the :root selector to redefine CSS variables */
+  :root {
+    --header-height: 5rem; /* Reduce header height for smaller screens */
+
+    /* Font size adjustments for responsive typography */
+    --h2-font-size: 1.5rem; /* Adjust size of <h2> headings */
+    --h3-font-size: 1.25rem; /* Adjust size of <h3> headings */
+    --normal-font-size: 1rem; /* Default text size for body content */
+    --small-font-size: 0.9375rem; /* Adjust smaller text size */
+    --smaller-font-size: 0.813rem; /* Adjust even smaller text like captions */
+  }
+}
+
+/*=============== BASE ===============*/
+/* Universal selector: Resets margin and padding for all elements to create a consistent layout.
+   Also sets box-sizing to border-box for more predictable element sizing. */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Enables smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Input, textarea, and body styling:
+     - Sets text color, font family, font size, and font weight for consistent typography.
+     - Uses CSS variables for easy customization. */
+  input,
+  textarea,
+  body {
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--weight-300);
+  }
+  
+  /* Sets the background color of the body to the primary background color. */
+  body {
+    background-color: var(--body-color);
+  }
+  
+  /* Headings (h1, h2, h3) styling:
+     - Applies a consistent color for headings.
+     - Sets a bold font weight for emphasis. */
+  h1,
+  h2,
+  h3 {
+    color: var(--title-color);
+    font-weight: var(--weight-700);
+  }
+  
+  /* Removes default list styling (bullets, numbers) for unordered lists. */
+  ul {
+    list-style: none;
+  }
+  
+  /* Removes default underline styling for hyperlinks. */
+  a {
+    text-decoration: none; /* Ensures links blend better into custom designs. */
+  }
+  
+  /* Paragraph styling: 
+     - Sets a comfortable line height for better readability. */
+  p {
+    line-height: 1.67em;
+  }
+  
+  /* Image styling:
+     - Ensures images never exceed their container's width.
+     - Maintains responsive layouts. */
+  img {
+    max-width: 100%;
+  }
+  
+  /* Input and textarea styling:
+     - Removes default background and border styling for a minimalist design.
+     - Eliminates the browser's default focus outline. */
+  textarea,
+  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+/* Creates a centered container with a maximum width and horizontal padding */
+.container {
+  max-width: 1260px;
+  margin-inline: auto; /* Centers the container horizontally */
+  padding-inline: 0.75rem; /* Adds horizontal padding */
+}
+
+/* Defines a grid layout with a gap between grid items */
+.grid {
+  display: grid; /* Enables CSS Grid layout */
+  gap: 1.75rem; /* Spacing between grid items */
+}
+
+/* Adds vertical padding for sections to create spacing */
+.section {
+  padding-block: 8rem; /* Adds padding above and below the section */
+}
+
+/* Styles the section titles with font size and spacing */
+.section__title {
+  font-size: var(--h1-font-size); /* Uses a variable for consistent title sizing */
+  margin-bottom: 1rem; /* Adds spacing below the title */
+}
+
+/* Align section titles and descriptions to the center, except for specific cases */
+.section__title:not(.about .section__title, .contact .section__title),
+.section__description {
+  text-align: center; /* Center align text */
+}
+
+/* Style the section description with a max width and center alignment */
+.section__description {
+  max-width: 600px; /* Restricts width for better readability */
+  margin-inline: auto; /* Centers the description horizontally */
+  margin-bottom: 3.75rem; /* Adds space below the description */
+}
+
+/* General button styling */
+.btn {
+  display: inline-block; /* Makes the button behave like an inline element */
+  color: var(--title-color); /* Button text color */
+  background-color: var(--first-color); /* Background color */
+  border: 2px solid var(--first-color); /* Border with matching color */
+  padding: 1rem 2.5rem; /* Adds space inside the button */
+  border-radius: var(--radius); /* Rounds the button corners */
+  font-size: var(--small-font-size); /* Sets button text size */
+  font-weight: var(--weight-500); /* Medium font weight */
+  letter-spacing: 2px; /* Adds spacing between letters */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: all 0.3s var(--transition); /* Smooth transition for hover effects */
+}
+
+/* Button hover effect: makes the background transparent and changes text color */
+.btn:hover {
+  background-color: transparent; /* Removes background */
+  color: var(--first-color); /* Changes text color to match the original background */
+}
+
+/*=============== HEADER & NAV ===============*/
+
+/* Styles for the header element */
+.header {
+  position: absolute; /* Places the header at the top of the page */
+  top: 0; /* Aligns to the top of the viewport */
+  left: 0; /* Aligns to the left edge */
+  width: 100%; /* Makes the header span the full width */
+  z-index: var(--z-fixed); /* Ensures the header stays on top of other elements */
+}
+
+/* Flexbox layout for navigation elements: nav, list, and socials */
+.nav,
+.nav__list,
+.nav__socials {
+  display: flex; /* Applies a flex layout */
+}
+
+/* Navigation container styles */
+.nav {
+  height: calc(var(--header-height) + 1.5rem); /* Adjusts height dynamically */
+  align-items: center; /* Vertically centers items */
+  justify-content: space-between; /* Distributes items with space between */
+  column-gap: 3.5rem; /* Adds space between columns */
+}
+
+/* Logo styling */
+.nav__logo {
+  color: var(--title-color); /* Logo text color */
+  font-size: 2.3rem; /* Logo text size */
+  font-weight: var(--weight-700); /* Bold text */
+}
+
+/* Highlight part of the logo in a different color */
+.nav__logo span {
+  color: var(--first-color); /* Secondary color for the span element */
+}
+
+/* Styles for navigation links container */
+.nav__list {
+  column-gap: 2rem; /* Space between navigation links */
+}
+
+/* Styling for links and social media icons */
+.nav__link,
+.nav__social-link {
+  font-size: var(--small-font-size); /* Link text size */
+  color: var(--title-color); /* Link text color */
+  transition: all 0.3s var(--transition); /* Smooth transition for hover effects */
+}
+
+/* Additional styles for navigation links */
+.nav__link {
+  font-weight: var(--weight-500); /* Medium font weight */
+}
+
+/* Social media icons container */
+.nav__socials {
+  column-gap: 1.5rem; /* Space between social icons */
+  margin-left: auto; /* Push social icons to the far right */
+}
+
+/* Hover effect for social media icons */
+.nav__social-link:hover {
+  color: var(--first-color); /* Change color on hover */
+  transform: translateY(-0.25rem); /* Slight upward movement on hover */
+}
+
+/* Button styles for links */
+.nav__link-btn {
+  font-size: var(--smaller-font-size); /* Smaller font size */
+  background-color: transparent; /* Transparent background */
+  border-color: var(--border-color); /* Border color */
+  padding: 0.625rem 1.25rem; /* Padding inside the button */
+}
+
+/* Hover effect for navigation buttons */
+.nav__link-btn:hover {
+  background-color: var(--first-color); /* Background color changes */
+  border-color: var(--first-color); /* Border color changes */
+  color: var(--title-color); /* Text color changes */
+}
+
+/* Toggle and close button styles (hidden by default) */
+.nav__toggle,
+.nav__close {
+  display: none; /* Not visible by default */
+}
+
+/* Highlight the active link or apply hover effect */
+.active-link,
+.nav__link:hover {
+  color: var(--first-color); /* Change color for active or hovered links */
+}
+
+/* Sticky header with background change on scroll */
+.scroll-header {
+  position: fixed; /* Fixes the header at the top of the viewport */
+  background-color: var(--container-color); /* Background color for the header */
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25); /* Subtle shadow for depth */
+  animation: slide-down 0.7s; /* Slide-in animation */
+}
+
+/* Keyframe animation for sliding the header down */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%); /* Start above the viewport */
+  }
+  100% {
+    transform: translateY(0); /* End in its normal position */
+  }
+}
+
+/* Adjust height for nav elements when the header changes on scroll */
+.scroll-header .nav {
+  height: var(--header-height); /* Reset height for the fixed header */
+}
+
+/*=============== SOCIAL ICONS ===============*/
+.nav__btns {
+  display: flex;
+  align-items: center; /* Align icons and button vertically */
+  gap: 1rem; /* Add spacing between icons and button */
+}
+
+.nav__socials {
+  display: flex;
+  gap: 0.75rem; /* Adjust spacing between icons */
+}
+
+.nav__social-link {
+  color: var(--title-color);
+  font-size: 1.5rem; /* Adjust icon size */
+  transition: color 0.3s ease;
+}
+
+.nav__social-link:hover {
+  color: var(--first-color); /* Highlight on hover */
+}
+
+/*=============== HOME ===============*/
+
+/* Styles for the home section */
+.home {
+  padding-block: 16rem 9rem; /* Adds vertical padding above and below the section */
+}
+
+/* Layout for the home section content */
+.home__container {
+  grid-template-columns: 7fr 5fr; /* Divides into two unequal columns */
+  align-items: center; /* Vertically centers the content */
+}
+
+/* Subtitle styling in the home section */
+.home__subtitle {
+  font-size: var(--small-font-size); /* Sets smaller font size */
+  font-weight: var(--weight-400); /* Light font weight */
+  letter-spacing: 0.25rem; /* Adds spacing between letters */
+  margin-bottom: 1.25rem; /* Adds space below the subtitle */
+  display: block; /* Ensures the subtitle behaves like a block element */
+}
+
+/* Title styling in the home section */
+.home__title {
+  font-family: var(--second-font); /* Uses a secondary font */
+  font-size: var(--big-font-size); /* Large font size for emphasis */
+  font-weight: var(--weight-900); /* Extra bold text */
+}
+
+/* Highlights a part of the title with a different color */
+.home__title span {
+  color: var(--first-color); /* Secondary color for emphasis */
+}
+
+/* Image styling in the home section */
+.home__img {
+  width: 420px; /* Fixed width */
+  height: 420px; /* Fixed height */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  border: 0.75rem solid var(--container-color); /* Adds a border with the container color */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow for depth */
+  margin-left: auto; /* Aligns the image to the right */
+}
+
+/*=============== ABOUT ===============*/
+
+/* Styles for the about section */
+.about {
+  background-color: var(--container-color); /* Sets background color */
+  padding: 4rem 0; /* Adds vertical padding */
+}
+
+/* Layout for the about section content */
+.about__container {
+  grid-template-columns: 5fr 7fr; /* Divides into two unequal columns */
+  align-items: center; /* Vertically aligns content */
+  column-gap: 4rem; /* Adds space between columns */
+  margin: 0 auto; /* Centers the container */
+}
+
+/* Image styling in the about section */
+.about__img {
+  transform: scale(1.2); /* Enlarges and flips the image horizontally */
+  flex: 0 0 auto; /* Prevents the image from shrinking or growing */
+  height: auto; /* Ensures the image height adjusts to its width */
+}
+
+/* Description text styling in the about section */
+.about__description {
+  margin-bottom: 2rem; /* Adds space below the description */
+}
+
+/* Content container in the about section */
+.about__content {
+  margin-top: 1rem; /* Adds space above the content if needed */
+}
+
+/*=============== TABS ===============*/
+
+/* Container for tab buttons */
+.tabs__btns {
+  display: flex; /* Displays buttons in a row */
+  column-gap: 2.5rem; /* Adds space between buttons */
+  margin-bottom: 1.25rem; /* Adds space below the buttons */
+}
+
+/* General styles for tab buttons */
+.tabs__btn,
+.tabs__description span:first-child {
+  font-weight: var(--weight-500); /* Medium font weight */
+}
+
+/* Tab button styling */
+.tabs__btn {
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  color: var(--title-color); /* Default text color */
+  position: relative; /* Allows positioning of the underline effect */
+  padding-bottom: 0.5rem; /* Adds space below the text */
+}
+
+/* Underline effect for tab buttons */
+.tabs__btn::after {
+  content: ''; /* Creates a visual line */
+  position: absolute; /* Positions the line relative to the button */
+  left: 0; /* Aligns to the left */
+  bottom: 0; /* Positions at the bottom of the button */
+  width: 30%; /* Default line width */
+  height: 2px; /* Line thickness */
+  background-color: var(--text-color); /* Default line color */
+  transition: all 0.3s var(--transition); /* Smooth transition for hover effects */
+}
+
+/* Spacing for tab data rows */
+.tabs__data {
+  row-gap: 1rem; /* Space between rows */
+}
+
+/* Ensures specific spans in the description are displayed as blocks */
+.tabs__description span:last-child {
+  display: block; /* Forces the span to break to a new line */
+}
+
+/* Active tab styling */
+.tabs__btn.tab__active {
+  color: var(--first-color); /* Changes color for active tabs */
+}
+
+/* Active tab underline styling */
+.tabs__btn.tab__active::after {
+  background-color: var(--first-color); /* Changes underline color */
+  width: 100%; /* Expands underline to the full width */
+}
+
+/* Hides inactive tab content */
+.tabs__item[data-content] {
+  display: none; /* Hides by default */
+}
+
+/* Shows active tab content */
+.tab__active[data-content] {
+  display: block; /* Displays the active tab */
+}
+
+/*=============== SKILLS ===============*/
+/* Container for skills section: defines a grid layout with three columns */
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive column layout*/
+  gap: 1.5rem; /* Space between items */
+}
+
+@media (max-width: 1024px) {
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .skills__container {
+    grid-template-columns: 1fr; /* One column for smaller screens */
+  }
+}
+
+/* Individual skill item styling */
+.skills__item {
+  background-color: var(--container-color); /* Sets background color */
+  padding: 3.5rem 2.5rem; /* Adds padding inside the item */
+  border-radius: var(--radius); /* Rounds the corners */
+  opacity: 0; /* Default state for fade-in */
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.skills__item.aos-animate {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Reset any transform */
+}
+
+/* Icon styling for skill items */
+.skills__icon {
+  color: var(--first-color); /* Icon color */
+  font-size: 3.25rem; /* Large size for emphasis */
+  line-height: 1; /* Ensures compact spacing around the icon */
+}
+
+/* Title styling for each skill */
+.skills__title {
+  font-size: var(--h3-font-size); /* Sets font size using a variable */
+  font-weight: var(--weight-500); /* Medium font weight */
+  margin-block: 1.75rem 1.25rem; /* Adds space above and below the title */
+}
+
+/* Description styling for skill items */
+.skills__description {
+  font-weight: var(--weight-400); /* Normal font weight */
+}
+
+/* Paragraph styling inside skill progress bars */
+.skills__progress p {
+  margin: 0; /* Removes default margin */
+  font-weight: bold; /* Makes text bold */
+}
+
+/* Progress bar container styling */
+.progress-bar {
+  width: 100%; /* Makes the bar fill its container width */
+  height: 10px; /* Sets a fixed height for the bar */
+  background: #ddd; /* Light gray background */
+  border-radius: 5px; /* Rounds the corners of the bar */
+  margin-bottom: 15px; /* Adds space below each progress bar */
+  overflow: hidden; /* Ensures content stays within the rounded corners */
+}
+
+/* Inner progress bar styling */
+.progress {
+  height: 100%; /* Matches the height of the progress-bar container */
+  border-radius: 5px; /* Rounds the corners of the progress bar */
+}
+/*=============== CONTACT ===============*/
+
+/* Contact section container: Creates a two-column grid */
+.contact__container {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  align-items: center; /* Vertically centers content */
+  column-gap: 4rem; /* Space between columns */
+}
+
+/* Styling for contact description and inputs */
+.contact__description,
+.contact__input {
+  font-weight: var(--weight-400); /* Normal font weight */
+}
+
+/* Additional margin for the description text */
+.contact__description {
+  margin-bottom: 3rem; /* Space below the description */
+}
+
+/* Styling for links within the description */
+.contact__description a {
+  color: var(--title-color); /* Link text color */
+  font-weight: var(--weight-500); /* Medium font weight */
+}
+
+/* Form container styling */
+.contact__form {
+  position: relative; /* Enables positioning for child elements like error messages */
+}
+
+/* Input field styling */
+.contact__input {
+  border: 2px solid var(--border-color); /* Adds a border */
+  padding: 0.8rem 1.25rem; /* Padding inside the input */
+  width: 100%; /* Full width of the container */
+  border-radius: var(--radius); /* Rounds the input corners */
+  font-size: var(--smaller-font-size); /* Small font size */
+  margin-bottom: 1.25rem; /* Space below each input */
+}
+
+/* Textarea specific styling */
+.textarea {
+  height: 120px; /* Fixed height */
+  resize: none; /* Prevents resizing of the textarea */
+}
+
+/* Error message styling */
+.error__message {
+  position: absolute; /* Positioned relative to the input */
+  bottom: -12%; /* Slightly below the input */
+  left: 0; /* Aligns to the left */
+  font-size: var(--small-font-size); /* Small font size */
+  font-weight: var(--weight-400); /* Normal font weight */
+}
+
+/* Color utility class */
+.color-first {
+  color: var(--first-color); /* Sets text color to the primary color */
+}
+
+/*=============== FOOTER ===============*/
+
+/* Footer container styling */
+.footer {
+  background-color: var(--container-color); /* Background color */
+  padding-block: 2rem; /* Adds vertical padding */
+}
+
+/* Footer grid layout */
+.footer__container {
+  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+  align-items: center; /* Centers items vertically */
+}
+
+/* Footer logo styling */
+.footer__logo {
+  color: var(--title-color); /* Logo text color */
+  font-size: 2.5rem; /* Large font size */
+  font-weight: var(--weight-700); /* Bold font weight */
+}
+
+/* Highlighted part of the logo */
+.footer__logo span {
+  color: var(--first-color); /* Secondary color for emphasis */
+}
+
+/* Footer social media icons layout */
+.footer__socials {
+  display: flex; /* Aligns icons in a row */
+  justify-content: center; /* Centers the icons */
+  column-gap: 0.75rem; /* Space between icons */
+}
+
+/* Individual social media link styling */
+.footer__social-link {
+  color: var(--text-color); /* Icon color */
+  font-size: var(--small-font-size); /* Icon size */
+  border: 2px solid var(--text-color); /* Adds a border */
+  width: 46px; /* Fixed width */
+  height: 46px; /* Fixed height */
+  border-radius: 50%; /* Makes icons circular */
+  display: grid; /* Centers icon within the circle */
+  place-items: center; /* Centers content */
+  transition: all 0.3s var(--transition); /* Smooth hover effect */
+}
+
+/* Hover effect for social media links */
+.footer__social-link:hover {
+  background-color: var(--first-color); /* Changes background color */
+  border-color: var(--first-color); /* Changes border color */
+}
+
+/* Footer copyright text */
+.footer__copyright {
+  font-size: var(--small-font-size); /* Small font size */
+  font-weight: var(--weight-400); /* Normal font weight */
+  justify-self: flex-end; /* Aligns to the right */
+}
+
+/*=============== SCROLL UP ===============*/
+
+/* Scroll-up button styling */
+.scrollup {
+  position: fixed; /* Fixed at a specific location */
+  right: 1rem; /* Distance from the right edge */
+  bottom: -100%; /* Hidden below the viewport by default */
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  border-radius: 50%; /* Circular shape */
+  background-color: var(--title-color); /* Background color */
+  display: grid; /* Centers the icon */
+  place-items: center; /* Centers the content */
+  z-index: var(--z-fixed); /* Ensures it stays above other elements */
+  transition: all 0.4s var(--transition); /* Smooth transition */
+}
+
+/* Scroll-up icon styling */
+.scrollup__icon {
+  color: var(--first-color); /* Icon color */
+  font-size: 2.25rem; /* Icon size */
+  line-height: 1; /* Compact spacing */
+}
+
+/* When the scroll-up button is visible */
+.show-scroll {
+  bottom: 3rem; /* Moves the button into view */
+}
+/*=============== BREAKPOINTS ===============*/
+
+/* For large devices (max-width: 1200px) */
+@media screen and (max-width: 1200px) {
+  /* Reduce max container width for large screens */
+  .container {
+    max-width: 960px;
+  }
+
+  /* Hide navigation buttons */
+  .nav__btns {
+    display: none;
+  }
+
+  /* Adjust top padding for the home section */
+  .home {
+    padding-top: 11rem;
+  }
+
+  /* Stack grid columns into a single column for specific sections */
+  .home__container,
+  .about__container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Add vertical spacing for home section items */
+  .home__container {
+    row-gap: 2rem;
+  }
+
+  /* Ensure home content appears before the image */
+  .home__content {
+    order: 1;
+  }
+
+  /* Center images horizontally */
+  .home__img,
+  .about__img {
+    margin-inline: auto;
+  }
+
+  /* Reduce size of home image */
+  .home__img {
+    border: 0.5rem solid var(--container-color);
+    width: 380px;
+    height: 380px;
+  }
+
+  /* Add spacing between rows in the about section */
+  .about__container {
+    row-gap: 2.5rem;
+  }
+
+  /* Change grid layout for services and portfolio sections */
+  .services__container,
+  .portfolio__container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+  }
+
+  /* Reduce spacing between contact section columns */
+  .contact__container {
+    column-gap: 2rem;
+  }
+}
+
+/* For medium-large devices (max-width: 992px) */
+@media screen and (max-width: 992px) {
+  /* Further reduce max container width */
+  .container {
+    max-width: 720px;
+  }
+
+  /* Adjust navigation bar height and spacing */
+  .nav {
+    height: var(--header-height);
+    column-gap: 1.25rem;
+  }
+
+  /* Reduce logo size */
+  .nav__logo {
+    font-size: 2rem;
+  }
+
+  /* Show toggle buttons for mobile navigation */
+  .nav__btns,
+  .nav__toggle,
+  .nav__close {
+    display: block;
+  }
+
+  /* Hide download CV button */
+  .nav__link-btn {
+    display: none;
+  }
+
+  /* Convert navigation menu to a vertical sidebar */
+  .nav__menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60vw;
+    height: 100vh;
+    background-color: var(--container-color);
+    padding: 3.5rem;
+    transition: all 0.8s var(--transition); /* Smooth toggle transition */
+  }
+
+  /* Show menu when toggled */
+  .show-menu {
+    right: 0;
+  }
+
+  /* Stack navigation links vertically */
+  .nav__list {
+    flex-direction: column;
+    row-gap: 1.125rem;
+  }
+
+  /* Close button styling */
+  .nav__close {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  /* Reduce home image size */
+  .home__img {
+    width: 320px;
+    height: 320px;
+  }
+
+  /* Adjust icon size for services */
+  .services__icon {
+    font-size: 2.5rem;
+  }
+
+  /* Adjust title margins for services */
+  .services__title {
+    margin-block: 1.5rem 1rem;
+  }
+
+  /* Stack contact section into a single column */
+  .contact__container {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  /* Adjust content order in the contact section */
+  .contact__content {
+    order: 1;
+  }
+
+  /* Add space below contact description */
+  .contact__description {
+    margin-bottom: 2rem;
+  }
+
+  /* Reduce footer social icon size */
+  .footer__social-link {
+    font-size: var(--smaller-font-size);
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Reduce scroll-up button size */
+  .scrollup {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Reduce scroll-up icon size */
+  .scrollup__icon {
+    font-size: 2rem;
+  }
+}
+
+/* For medium devices (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  /* Further reduce max container width */
+  .container {
+    max-width: 540px;
+  }
+
+  /* Reduce size of home image */
+  .home__img {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* Adjust tabs layout for wrapping */
+  .tabs__btns {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+    column-gap: 1.5rem;
+  }
+
+  /* Stack services, portfolio, and footer items */
+  .services__container,
+  .portfolio__container,
+  .footer__container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Center footer items and add spacing */
+  .footer__container {
+    row-gap: 1.5rem;
+    justify-items: center;
+  }
+
+  /* Center copyright text in the footer */
+  .footer__copyright {
+    justify-self: center;
+  }
+}
+
+/* For small devices (max-width: 576px) */
+@media screen and (max-width: 576px) {
+  /* Expand navigation menu width */
+  .nav__menu {
+    width: 100vw;
+    padding: 2.75rem;
+  }
+
+  /* Further reduce home image size */
+  .home__img {
+    width: 260px;
+    height: 260px;
+  }
+
+  /* Adjust padding for services items */
+  .services__item {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* For very small devices (max-width: 350px) */
+@media screen and (max-width: 350px) {
+  /* Minimize home image size */
+  .home__img {
+    width: 240px;
+    height: 240px;
+  }
+
+  /* Adjust tab description layout */
+  .tabs__description span:last-child {
+    display: inline;
+  }
+
+  /* Adjust portfolio data positioning */
+  .portfolio__data {
+    inset-inline: 1rem;
+    bottom: 1rem;
+  }
+}
+
+/*=============== SLIDESHOW FOR SINGLE IMAGE ===============*/
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem auto;
+  text-align: center;
+  width: auto;
+  max-width: 800px; /* Increased max width for the slideshow */
+}
+
+.slideshow__container {
+  display: flex; /* Align slides horizontally */
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Increased width for the container */
+  height: 600px; /* Increased height for the container */
+  margin: 0 auto;
+  justify-content: center; /* Center slides horizontally */
+  align-items: center; /* Center slides vertically */
+  overflow: hidden; /* Hide overflow to avoid layout issues */
+}
+
+.slideshow__slide {
+  position: relative;
+  flex-shrink: 0; /* Ensure slides do not shrink */
+  width: 100%; /* Make slides take up the full container width */
+  height: 100%; /* Ensure slides match the container height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out; /* Smooth slide transitions */
+}
+
+.slideshow__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Maintain aspect ratio of the image */
+  display: block;
+}
+
+.slideshow__caption {
+  position: absolute;
+  bottom: 0; /* Align at the bottom of the image */
+  left: center; /* Align with the left edge */
+  background-color: black;
+}
+
+/* Navigation Buttons */
+.slideshow__prev,
+.slideshow__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--container-color);
+  border: none;
+  font-size: 2rem; /* Slightly larger font for better visibility */
+  color: var(--title-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.8;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.slideshow__prev {
+  left: 1rem; /* Inside container */
+}
+
+.slideshow__next {
+  right: 1rem; /* Inside container */
+}
+
+.slideshow__prev:hover,
+.slideshow__next:hover {
+  background-color: var(--first-color);
+  color: var(--title-color);
+  opacity: 1;
+}
+
+
+.slideshow__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/*=============== Dots for Slideshow ===============*/
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slideshow__dots .dot.active-dot {
+  background-color: var(--first-color)/* Highlight the active dot */
+}
+
+
+
