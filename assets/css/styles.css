@@ -976,6 +976,7 @@
   margin: 0 auto;
   justify-content: center; /* Center slides horizontally */
   align-items: center; /* Center slides vertically */
+  touch-action: pan-y; /* Allow vertical swiping */
   overflow: hidden; /* Hide overflow to avoid layout issues */
 }
 
