@@ -11,9 +11,10 @@
   --title-color: hsl(0, 0%, 100%);
   --text-color: hsl(0, 0%, 77%);
   --body-color: hsl(0, 0%, 6%);
-  --container-color: hsl(0, 0%, 10%);
+  --container-color: hsl(0, 0%, 10%); 
   --border-color: hsla(0, 0%, 100%, 0.2);
   --hyperlink-color: hsla(220, 90%, 56%, 1);
+  --hyperlinkHover-color: hsla(0, 90%, 56%, 1);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -112,6 +113,10 @@
   a {
     text-decoration: none; /* Ensures links blend better into custom designs. */
     color: var(--hyperlink-color);
+  }
+
+  a:hover {
+    color: var(--hyperlinkHover-color);
   }
   
   /* Paragraph styling: 
