@@ -18,6 +18,9 @@
   <!--=============== ICON ===============-->
   <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
 
+  <!--=============== TRANSLATION ===============-->
+  <script src="https://unpkg.com/i18next/i18next.min.js"></script>
+
   <title>Serge Junk - IT Portfolio</title>
 </head>
 
@@ -30,14 +33,14 @@
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-          <li><a href="#home" class="nav__link active-link">Home</a></li>
-          <li><a href="#about" class="nav__link">About</a></li>
-          <li><a href="#skills" class="nav__link">Skills</a></li>
-          <li><a href="#projects" class="nav__link">Projects</a></li>
-          <li><a href="#experience" class="nav__link">Experience</a></li>
-          <li><a href="#education" class="nav__link">Education</a></li>
-          <li><a href="#showcase" class="nav__link">Showcase</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
+          <li><a href="#home" class="nav__link active-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="#about" class="nav__link" data-i18n="nav.about">About</a></li>
+          <li><a href="#skills" class="nav__link" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#projects" class="nav__link" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#experience" class="nav__link" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#education" class="nav__link" data-i18n="nav.education">Education</a></li>
+          <li><a href="#showcase" class="nav__link" data-i18n="nav.showcase">Showcase</a></li>
+          <li><a href="#contact" class="nav__link" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
 
@@ -55,52 +58,60 @@
           </a>
         </div>
         <!-- Download CV Button -->
-        <a href="assets/Serge_Junk_CV.pdf" target="_blank" class="nav__link-btn btn">
-          Download CV
+        <a href="assets/Serge_Junk_CV.pdf" target="_blank" class="nav__link-btn btn" data-i18n="buttons.downloadCV">Download CV</a>
         </a>
       </div>
+      
+       <!-- Language Switcher -->
+       <div class="dropdown">
+        <button class="dropdown-btn" id="language-btn" aria-label="Language Selection" data-i18n="buttons.dropdown">
+          Language
+          <i class="uil uil-angle-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <button data-lang="en">English</button>
+          <button data-lang="fr">Français</button>
+          <button data-lang="de">Deutsch</button>
+        </div>
       </div>
     </nav>
   </header>
 
   <!--=============== MAIN ===============-->
   <main class="main">
-    <!--=============== HOME ===============-->
-    <section class="home section" id="home">
-      <div class="home__container container grid">
-        <div class="home__content">
-          <h1 class="home__title" data-aos="fade-up">
-            Hi, I'm Serge Junk <span>IT Student</span> in Luxembourg
-          </h1>
-          <p class="home__description" data-aos="fade-up" data-aos-delay="100">
-            Passionate about programming, 3D printing, and creating innovative
-            solutions.
-          </p>
-        </div>
-        <img src="assets/img/Serge_CV.jpg.png" alt="Serge Junk" class="home__img" data-aos="zoom-in"/>
+   <!--=============== HOME ===============-->
+   <section class="home section" id="home">
+    <div class="home__container container grid">
+      <div class="home__content">
+        <h1 class="home__title" data-i18n="home.title" data-aos="fade-up">
+          Hi, I'm Serge Junk <span>IT Student</span> in Luxembourg
+        </h1>
+        <p class="home__description" data-i18n="home.description" data-aos="fade-up" data-aos-delay="100">
+          Passionate about programming, 3D printing, and creating innovative solutions.
+        </p>
       </div>
-    </section>
+      <img src="assets/img/Serge_CV.jpg.png" alt="Serge Junk" class="home__img" data-aos="zoom-in"/>
+    </div>
+  </section>
 
-    <!--=============== ABOUT ===============-->
-    <section class="about section" id="about">
-      <div class="about__container container grid">
-        <img src="assets/img/Serge_SideR.png" alt="About Me" class="about__img"/>
-        <div class="about__content" ata-aos="fade-right">
-          <h2 class="section__title">About Me</h2>
-          <p class="about__description">
-            I'm Serge Junk, an IT student with a passion for programming, 3D
-            printing, and learning new technologies. Currently studying at
-            University of Luxembourg. I enjoy working on creative projects and
-            helping others through technology.
-          </p>
-        </div>
+   <!--=============== ABOUT ===============-->
+   <section class="about section" id="about">
+    <div class="about__container container grid">
+      <img src="assets/img/Serge_SideR.png" alt="About Me" class="about__img"/>
+      <div class="about__content" data-aos="fade-right">
+        <h2 class="section__title" data-i18n="about.title">About Me</h2>
+        <p class="about__description" data-i18n="about.description">
+          I'm Serge Junk, an IT student with a passion for programming, 3D printing, and learning new technologies. Currently studying at University of Luxembourg. I enjoy working on creative projects and helping others through technology.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
+
 
     <!--=============== SKILLS ===============-->
     <section class="skills section" id="skills">
       <!-- Section Title -->
-      <h2 class="section__title" >Skills</h2>
+      <h2 class="section__title" data-i18n="skills.title">Skills</h2>
       
       <!-- Skills Container: Holds all skill categories -->
       <div class="skills__container container grid" >
@@ -108,7 +119,7 @@
         <!-- Programming Skills Section -->
         <div class="skills__item" data-aos="fade-up">
           <!-- Category Title -->
-          <h3>Programming</h3>
+          <h3 data-i18n="skills.programming">Programming</h3>
           <div class="skills__progress">
             <!-- Individual Skill: Java -->
             <p>Java</p>
@@ -179,7 +190,7 @@
         <!-- Tools Section -->
         <div class="skills__item" data-aos="fade-up">
           <!-- Category Title -->
-          <h3>Tools</h3>
+          <h3 data-i18n="skills.tools">Tools</h3>
           <!-- List of Tools with Icons -->
           <ul class="tools__list">
             <li><i class="uil uil-camera"></i> Photoshop</li> <!-- Icon and Tool Name -->
@@ -193,13 +204,13 @@
         <!-- Languages Section -->
         <div class="skills__item" data-aos="fade-up">
           <!-- Category Title -->
-          <h3>Languages</h3>
+          <h3 data-i18n="skills.languages">Languages</h3>
           <!-- List of Languages with Proficiency Levels -->
           <ul class="language__list">
-            <li>Luxembourgish (C2)</li> <!-- Language and CEFR level -->
-            <li>German (C1)</li>
-            <li>French (C1)</li>
-            <li>English (B2+)</li>
+            <li data-i18n="skills.language.luxembourgish">Luxembourgish (C2)</li>
+            <li data-i18n="skills.language.german">German (C1)</li>
+            <li data-i18n="skills.language.french">French (C1)</li>
+            <li data-i18n="skills.language.english">English (B2+)</li>
           </ul>
         </div>
       </div>
@@ -207,16 +218,16 @@
 
     <!--=============== PROJECTS ===============-->
     <section class="projects section" id="projects">
-      <h2 class="section__title" >Projects</h2>
+      <h2 class="section__title" data-i18n="projects.title" >Projects</h2>
       <div class="projects__container container grid">
         <div class="projects__item" data-aos="fade-up" >
-          <h3>Portfolio Website</h3>
-          <p>Developed a portfolio website (this one).</p>
-          <a href="https://github.com/sergejunk/portfolio-website" target="_blank">View on GitHub</a>
+          <h3 data-i18n="projects.project1.title" >Portfolio Website</h3>
+          <p data-i18n="projects.project1.description" >Developed a portfolio website (this one).</p>
+          <a href="https://github.com/sergejunk/portfolio-website" target="_blank" data-i18n="projects.project1.link">View on GitHub</a>
         </div>
         <div class="projects__item" data-aos="fade-up">
-          <h3>Game Design</h3>
-          <p>Currently creating a personal top-down pixel-art game.</p>
+          <h3 data-i18n="projects.project2.title">Game Design</h3>
+          <p data-i18n="projects.project2.description">Currently creating a personal top-down pixel-art game.</p>
         </div>
       </div>
     </section>
@@ -224,7 +235,7 @@
     <!--=============== SHOWCASE SLIDESHOW ===============-->
     <section class="slideshow section" id="showcase">
       <!-- Section Title -->
-      <h2 class="section__title">Showcase</h2>
+      <h2 class="section__title" data-i18n="showcase.title">Showcase</h2>
     
       <!-- Slideshow Container: Holds all slideshow slides -->
       <div class="slideshow__container">
@@ -234,7 +245,7 @@
           <!-- Image for Slide 1 -->
           <img src="assets/img/Eldenritch-Title.gif" alt="Game Project" class="slideshow__img" />
           <!-- Caption for Slide 1 -->
-          <p class="slideshow__caption">My custom game project</p>
+          <p class="slideshow__caption" data-i18n="showcase.slide1">My custom game project</p>
         </div>
     
         <!-- Slide 2: 3D-Printed Figure -->
@@ -242,7 +253,7 @@
           <!-- Image for Slide 2 -->
           <img src="assets/img/starMan-Hat.jpg" alt="3D Print" class="slideshow__img"/>
           <!-- Caption for Slide 2 -->
-          <p class="slideshow__caption">Custom 3D-printed Figure </p>
+          <p class="slideshow__caption" data-i18n="showcase.slide2">Custom 3D-printed Figure </p>
         </div>
     
         <!-- Slide 3: 3D PC Design -->
@@ -250,7 +261,7 @@
           <!-- Image for Slide 3 -->
           <img src="assets/img/PC_Rendered.png" alt="3D Print" class="slideshow__img" />
           <!-- Caption for Slide 3 -->
-          <p class="slideshow__caption">3D PC design modeled in Blender</p>
+          <p class="slideshow__caption" data-i18n="showcase.slide3">3D PC design modeled in Blender</p>
         </div>
     
         <!-- Slide 4: 3D Printer Build -->
@@ -258,7 +269,7 @@
           <!-- Image for Slide 4 -->
           <img src="assets/img/3d-printer.jpg" alt="3D Print" class="slideshow__img" />
           <!-- Caption for Slide 4 -->
-          <p class="slideshow__caption">Building 3D-Printer from Prusa </p>
+          <p class="slideshow__caption" data-i18n="showcase.slide4">Building 3D-Printer from Prusa </p>
         </div>
 
         <!-- Slide 5: 3D Printer Build -->
@@ -266,7 +277,7 @@
           <!-- Image for Slide 4 -->
           <img src="assets/img/Gimp_Logo.png" alt="3D Print" class="slideshow__img" />
           <!-- Caption for Slide 4 -->
-          <p class="slideshow__caption">Uni Project: Simple Logo created in Gimp </p>
+          <p class="slideshow__caption" data-i18n="showcase.slide5">Uni Project: Simple Logo created in Gimp </p>
         </div>
         <!-- Add more slides here -->
       </div>
@@ -287,25 +298,25 @@
 
     <!--=============== EXPERIENCE ===============-->
     <section class="experience section" id="experience">
-      <h2 class="section__title">Experience</h2>
+      <h2 class="section__title" data-i18n="experience.title">Experience</h2>
       <div class="experience__container container grid">
         <div class="experience__item" data-aos="fade-up">
-          <h3>Animateur Specialisé (2023-today)</h3>
-          <p>
+          <h3 data-i18n="experience.experience1.title">Animateur Specialisé (2023-today)</h3>
+          <p data-i18n="experience.experience1.description">
             Working in <a href="https://www.base1.lu" target="_blank"> Base 1</a> MakerSpace as Animator by leading workshops,
             helping young creators to realize their projects.
           </p>
         </div>
         <div class="experience__item" data-aos="fade-up">
-          <h3>Service Volontaire National (2023)</h3>
-          <p>
+          <h3 data-i18n="experience.experience2.title">Service Volontaire National (2023)</h3>
+          <p data-i18n="experience.experience2.description">
             From April 15 to July 21, I supported young creators in <a href="https://www.base1.lu" target="_blank"> Base 1</a> to realize their projects and focusing on
             technical development.
           </p>
         </div>
         <div class="experience__item" data-aos="fade-up" >
-          <h3>MakerFest 2019 feat Base1</h3>
-          <p>
+          <h3 data-i18n="experience.experience3.title">MakerFest 2019 feat Base1</h3>
+          <p data-i18n="experience.experience3.description">
             Conducted 3D printing workshops for children under six years old. Explaining them how 3D-Printers works.
           </p>
         </div>
@@ -314,26 +325,26 @@
 
     <!--=============== Education ===============-->
     <section class="education section" id="education">
-      <h2 class="section__title">IT Education</h2>
+      <h2 class="section__title" data-i18n="education.title">IT Education</h2>
       <div class="education__container container grid">
         <div class="education" data-aos="fade-up" >
-          <h3>University of Luxembourg</h3>
-          <p>
+          <h3 data-i18n="education.uniLux.title">University of Luxembourg</h3>
+          <p data-i18n="education.uniLux.description">
             Since September 2023, I have been studying
             <a href="https://www.uni.lu/fstm-en/study-programs/bachelor-in-applied-information-technology/" target="_blank"> Applied Information Technology</a> 
             at the University of Luxembourg.
           </p>
         </div>
         <div class="experience__item" data-aos="fade-up">
-          <h3>Karlsruher Institut für Technologie</h3>
-          <p>
+          <h3 data-i18n="education.kit.title">Karlsruher Institut für Technologie</h3>
+          <p data-i18n="education.kit.description">
             From October 2021 until April 2023, I studied Computer Science at the 
             <a href="https://www.sle.kit.edu/english/vorstudium/bachelor-informatics.php" target="_blank"> "Karlsruher Institut für Technologie"</a> (University in Germany).
           </p>
         </div>
         <div class="experience__item" data-aos="fade-up">
-          <h3>Lycée des Arts et Métiers</h3>
-          <p>
+          <h3 data-i18n="education.highschool.title">Lycée des Arts et Métiers</h3>
+          <p data-i18n="education.highschool.description">
             Starting in September 2018, I studied IT at Lycée des Arts et Métiers in Luxembourg City (high school) and received my secondary school leaving diploma in 2021.
           </p>
         </div>
@@ -346,9 +357,9 @@
       <div class="contact__container container grid">
          <!-- Contact content: title, description, and form -->
         <div class="contact__content">
-          <h2 class="section__title"  >Contact Me</h2>
+          <h2 class="section__title" data-i18n="contact.title">Contact Me</h2>
           <!-- Contact description with a direct email link -->
-          <p class="contact__description">
+          <p class="contact__description" data-i18n="contact.description">
             Feel free to reach out via email for any questions.
             <br>
               Email:
@@ -356,14 +367,14 @@
             </br>
           </p>
 
-          <!-- Contact form for structured submissions -->
           <form class="contact__form" id="contact-form">
             <!-- Input for user's name -->
             <div class="contact__form-input">
               <input
                 type="text"
                 name="from_name"
-                placeholder="Your Name *"
+                placeholder=""
+                data-i18n="contact.form.placeholders.name"
                 class="contact__input"
                 id="contact-name"
               />
@@ -373,7 +384,8 @@
               <input
                 type="email"
                 name="from_email"
-                placeholder="Your e-mail"
+                placeholder=""
+                data-i18n="contact.form.placeholders.email"
                 class="contact__input"
                 id="contact-email"
               />
@@ -383,7 +395,8 @@
               <input
                 type="text"
                 name="subject"
-                placeholder="Write a Subject"
+                placeholder=""
+                data-i18n="contact.form.placeholders.subject"
                 class="contact__input"
                 id="contact-subject"
               />
@@ -394,7 +407,8 @@
                 name="message"
                 id="contact-message"
                 class="contact__input textarea"
-                placeholder="Your Message"
+                placeholder=""
+                data-i18n="contact.form.placeholders.message"
               ></textarea>
             </div>
             <!-- Submit button -->
@@ -434,7 +448,8 @@
   <script src="assets/js/slideScript.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/touchFunction.js"></script>
-  <!-- AOS JS-->
+
+  <!--AOS JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({
@@ -445,5 +460,9 @@
       once: true, // Animation occurs only once while scrolling
     });
   </script>
-</body>
+
+  <!--Translation JS-->
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/translationLogic.js"></script>
+  </body>
 </html>

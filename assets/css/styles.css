@@ -187,13 +187,15 @@
   color: var(--title-color); /* Button text color */
   background-color: var(--first-color); /* Background color */
   border: 2px solid var(--first-color); /* Border with matching color */
-  padding: 1rem 2.5rem; /* Adds space inside the button */
+  padding: 0.5rem 1.25rem; /* Adds space inside the button */
   border-radius: var(--radius); /* Rounds the button corners */
-  font-size: var(--small-font-size); /* Sets button text size */
+  font-size: var(--smaller-font-size); /* Sets button text size */
   font-weight: var(--weight-500); /* Medium font weight */
-  letter-spacing: 2px; /* Adds spacing between letters */
+  letter-spacing: 1px; /* Adds spacing between letters */
   cursor: pointer; /* Changes cursor to pointer on hover */
   transition: all 0.3s var(--transition); /* Smooth transition for hover effects */
+  text-align: center; /* Ensure text is horizontally centered */
+  line-height: 1.5; /* Adjust for vertical centering */
 }
 
 /* Button hover effect: makes the background transparent and changes text color */
@@ -225,7 +227,7 @@
   height: calc(var(--header-height) + 1.5rem); /* Adjusts height dynamically */
   align-items: center; /* Vertically centers items */
   justify-content: space-between; /* Distributes items with space between */
-  column-gap: 3.5rem; /* Adds space between columns */
+  column-gap: 1rem; /* Adds space between columns */
 }
 
 /* Logo styling */
@@ -275,7 +277,9 @@
   font-size: var(--smaller-font-size); /* Smaller font size */
   background-color: transparent; /* Transparent background */
   border-color: var(--border-color); /* Border color */
-  padding: 0.625rem 1.25rem; /* Padding inside the button */
+  padding: 0.4rem 0.75rem; /* Further reduced padding for alignment */
+  margin-left: auto; /* Keeps button aligned to the right */
+  line-height: 1; /* Ensures button height matches the nav links */
 }
 
 /* Hover effect for navigation buttons */
@@ -340,6 +344,57 @@
 
 .nav__social-link:hover {
   color: var(--first-color); /* Highlight on hover */
+}
+
+/*===============Dropdown for Langauge ===============*/
+
+/* Dropdown button */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-btn i {
+  margin-left: 5px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Dropdown content buttons */
+.dropdown-content button {
+  color: white;
+  background: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #575757;
+}
+
+/* Show dropdown content on hover or click */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /*=============== HOME ===============*/
@@ -887,6 +942,10 @@
 
 /* For medium devices (max-width: 768px) */
 @media screen and (max-width: 768px) {
+  .btn {
+    padding: 0.4rem 1rem;
+    font-size: var(--smaller-font-size);
+  }
   /* Further reduce max container width */
   .container {
     max-width: 540px;
