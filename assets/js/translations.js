@@ -82,7 +82,7 @@ const translations = {
         },
         highschool: {
           title: "Lycée des Arts et Métiers",
-          description: "Starting in September 2018, I studied IT at Lycée des Arts et Métiers in Luxembourg City (high school) and received my secondary school leaving diploma in 2021."
+          description: "From september 2018 until june 2021, I've studied IT at Lycée des Arts et Métiers in Luxembourg City (high school) and received my secondary school leaving diploma in IT."
         }
       },
       contact: {
@@ -182,7 +182,7 @@ const translations = {
         },
         highschool: {
           title: "Lycée des Arts et Métiers",
-          description: "À partir de septembre 2018, j'ai étudié l'informatique au Lycée des Arts et Métiers à Luxembourg-ville (lycée) et obtenu mon diplôme de fin d'études secondaires en 2021."
+          description: "De septembre 2018 jusqu'à juin 2021, j'ai étudié l'informatique au Lycée des Arts et Métiers à Luxembourg-ville (lycée) et obtenu mon diplôme de fin d'études secondaires en IT."
         }
       },
       contact: {
@@ -282,7 +282,7 @@ const translations = {
         },
         highschool: {
           title: "Lycée des Arts et Métiers",
-          description: "Ab September 2018 habe ich IT am Lycée des Arts et Métiers in Luxemburg-Stadt (Gymnasium) studiert und 2021 mein Sekundarschulabschlusszeugnis erhalten."
+          description: "Von September 2018 bis Juni 2021 habe ich IT am Lycée des Arts et Métiers in Luxemburg-Stadt (Gymnasium) studiert und ein  Sekundarschulabschlusszeugnis in IT erhalten."
         }
       },
       contact: {
