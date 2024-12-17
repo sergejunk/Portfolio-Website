@@ -19,6 +19,21 @@ function updateContent() {
       el.innerHTML = translatedText; // Default behavior for other elements
     }
   });
+
+  // Update CV download link based on the language
+  const cvButton = document.getElementById("download-cv");
+  const currentLang = i18next.language; // Get the current selected language
+  switch (currentLang) {
+    case "fr":
+      cvButton.href = "assets/FR_CV_SergeJunk.pdf"; // French version
+      break;
+    case "de":
+      cvButton.href = "assets/DE_CV_SergeJunk"; // German version
+      break;
+    default:
+      cvButton.href = "assets/EN_CV_SergeJunk.pdf"; // English version
+      break;
+  }
 }
 
 // Handle dropdown language selection
