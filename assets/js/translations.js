@@ -58,7 +58,7 @@ const translations = {
       experience: {
         title: "Experience",
         experience1: {
-          title: "Animateur Specialisé (2023-today)",
+          title: "Freelance Animator (2023-today)",
           description: 'Working in <a href="https://www.base1.lu" target="_blank">Base 1</a> MakerSpace as Animator by leading workshops, helping young creators to realize their projects.'
         },
         experience2: {
